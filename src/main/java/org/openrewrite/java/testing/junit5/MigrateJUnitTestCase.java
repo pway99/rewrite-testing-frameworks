@@ -72,14 +72,14 @@ public class MigrateJUnitTestCase extends Recipe {
     @Override
     protected TreeVisitor<?, ExecutionContext> getSingleSourceApplicableTest() {
         return new JavaIsoVisitor<ExecutionContext>() {
-            private final Marker FOUND_TYPE = new JavaSearchResult(randomId(), null, null);
+            private final Marker fOUNDTYPE = new JavaSearchResult(randomId(), null, null);
 
             @Override
             public J.CompilationUnit visitCompilationUnit(J.CompilationUnit cu, ExecutionContext executionContext) {
                 J.CompilationUnit c = cu;
                 for (J.ClassDeclaration clazz : c.getClasses()) {
                     if (TypeUtils.isAssignableTo(JavaType.Class.build("junit.framework.TestCase"), clazz.getType())) {
-                        c = c.withMarkers(c.getMarkers().addIfAbsent(FOUND_TYPE));
+                        c = c.withMarkers(c.getMarkers().addIfAbsent(fOUNDTYPE));
                     }
                 }
 
