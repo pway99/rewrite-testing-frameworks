@@ -16,7 +16,6 @@
 package org.openrewrite.java.testing.cleanup
 
 import org.junit.jupiter.api.Test
-import org.openrewrite.Parser
 import org.openrewrite.Recipe
 import org.openrewrite.java.JavaParser
 import org.openrewrite.java.JavaRecipeTest
@@ -115,16 +114,12 @@ class TestMethodsNotPublicTest : JavaRecipeTest {
 
     @Test
     fun ignorePrivateModifiers() = assertUnchanged(
-            before = """
-            import java.util.Collections;
-            import org.junit.jupiter.api.AfterEach;
-            import org.junit.jupiter.api.BeforeEach;
-            import org.junit.jupiter.api.DynamicTest;
-            import org.junit.jupiter.api.RepeatedTest;
-            import org.junit.jupiter.api.Test;
-            import org.junit.jupiter.api.TestFactory;
-            import org.junit.jupiter.params.ParameterizedTest;
-            import org.junit.jupiter.params.provider.ValueSource;
+        before = """
+            import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Collections;
 
             class ATest {
 
@@ -154,16 +149,12 @@ class TestMethodsNotPublicTest : JavaRecipeTest {
 
     @Test
     fun ignoreProtectedModifiers() = assertUnchanged(
-            before = """
-            import java.util.Collections;
-            import org.junit.jupiter.api.AfterEach;
-            import org.junit.jupiter.api.BeforeEach;
-            import org.junit.jupiter.api.DynamicTest;
-            import org.junit.jupiter.api.RepeatedTest;
-            import org.junit.jupiter.api.Test;
-            import org.junit.jupiter.api.TestFactory;
-            import org.junit.jupiter.params.ParameterizedTest;
-            import org.junit.jupiter.params.provider.ValueSource;
+        before = """
+            import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Collections;
 
             class ATest {
 
